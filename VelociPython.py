@@ -37,15 +37,15 @@ plan = ""
 try:
     plan = opx.load_workbook(filename = 'Link.xlsx')
     pag_med = plan['Medidas']
-    pag_med.append([Data, Download, Upload, "", Min, Max, Media])
+    # pag_med.append([Data, Download, Upload, "", Min, Max, Media])
 
 except: 
     plan = opx.Workbook()
     plan.active.title = "Medidas"
     pag_med = plan.active
     pag_med.append(['Data','Download', 'Upload','','Min', 'Max', 'Med'])
-    pag_med.append([Data, Download, Upload, "", Min, Max, Media])
+pag_med.append([Data, Download, Upload, "", Min, Max, Media])
 
 
-plan.save("Link.xlsx")
+plan.save('Link.xlsx')
 navegador.close()
