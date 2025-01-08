@@ -10,7 +10,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
 from datetime import datetime
-import pyautogui
+#import pyautogui
 import time
 from openpyxl import Workbook
 import openpyxl as opx
@@ -36,7 +36,7 @@ Media = navegador.find_element (By.XPATH, '/html/body/div[3]/div/div[3]/div/div/
 plan = ""
 
 try:
-    plan = opx.load_workbook(filename = 'D:/Medição do Link.xlsx')
+    plan = opx.load_workbook(filename = 'Z:/7_Geral (RENAN)/Informática/Monitoramento de Link.xlsx')
     pag_med = plan['Medidas']
     pag_med.append([Data, Hora, "", Download, Upload, "", Min, Max, Media])
 
@@ -47,5 +47,5 @@ except:
     pag_med.append(['Data', 'Hora', '', 'Download', 'Upload','','Min', 'Max', 'Med'])
     pag_med.append([Data, Hora, "", Download, Upload, "", Min, Max, Media])
 
-plan.save('D:/Medição do Link.xlsx')
+plan.save('Z:/7_Geral (RENAN)/Informática/Monitoramento de Link.xlsx')
 navegador.close()
