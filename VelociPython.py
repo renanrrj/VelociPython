@@ -25,7 +25,8 @@ time.sleep(3)
 navegador.find_element (By.XPATH, '/html/body/div[3]/div/div[3]/div/div/div/div[2]/div[3]/div[1]/a/span[4]').click()
 time.sleep(40)
 
-Data = datetime.now()
+Data = datetime.today().strftime('%Y-%m-%d')
+Hora = datetime.now().time().strftime('%H:%M:%S')
 Download = navegador.find_element (By.XPATH, '/html/body/div[3]/div/div[3]/div/div/div/div[2]/div[3]/div[3]/div/div[3]/div/div/div[2]/div[1]/div[1]/div/div[2]/span').text
 Upload = navegador.find_element (By.XPATH, '/html/body/div[3]/div/div[3]/div/div/div/div[2]/div[3]/div[3]/div/div[3]/div/div/div[2]/div[1]/div[2]/div/div[2]/span').text
 Min = navegador.find_element (By.XPATH, '/html/body/div[3]/div/div[3]/div/div/div/div[2]/div[3]/div[3]/div/div[3]/div/div/div[2]/div[2]/div/span[3]/span' ).text
@@ -35,17 +36,16 @@ Media = navegador.find_element (By.XPATH, '/html/body/div[3]/div/div[3]/div/div/
 plan = ""
 
 try:
-    plan = opx.load_workbook(filename = 'Link.xlsx')
+    plan = opx.load_workbook(filename = 'D:/Medição do Link.xlsx')
     pag_med = plan['Medidas']
-    # pag_med.append([Data, Download, Upload, "", Min, Max, Media])
+    pag_med.append([Data, Hora, "", Download, Upload, "", Min, Max, Media])
 
 except: 
     plan = opx.Workbook()
     plan.active.title = "Medidas"
     pag_med = plan.active
-    pag_med.append(['Data','Download', 'Upload','','Min', 'Max', 'Med'])
-pag_med.append([Data, Download, Upload, "", Min, Max, Media])
+    pag_med.append(['Data', 'Hora', '', 'Download', 'Upload','','Min', 'Max', 'Med'])
+    pag_med.append([Data, Hora, "", Download, Upload, "", Min, Max, Media])
 
-
-plan.save('Link.xlsx')
+plan.save('D:/Medição do Link.xlsx')
 navegador.close()
