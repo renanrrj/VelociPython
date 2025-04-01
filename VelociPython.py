@@ -5,7 +5,6 @@
 #    pip install openpyxl
 #    pip install pyautogui ---------
 
-
 from selenium import webdriver # primeira linha para importar o webdriver
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.service import Service
@@ -35,16 +34,16 @@ plan = ""
 
 Meses = ["", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
 NMesAtual = datetime.now().month
-MesAtual = Meses[NMesAtual]
+MesPlanilha = Meses[NMesAtual]
 
 try:               
     plan = opx.load_workbook(filename = 'Z:/7_Geral (RENAN)/Informática/Monitoramento de Link.xlsx')
-    pag_med = plan[MesAtual]
+    pag_med = plan[MesPlanilha]
     pag_med.append([Data, Hora, "", Download, Upload, "", Min, Max, Media])
 
 except:    
     plan = opx.Workbook()
-    plan.active.title = MesAtual
+    plan.active.title = MesPlanilha
     pag_med = plan.active
     pag_med.append(['Data', 'Hora', '', 'Download', 'Upload','','Min', 'Max', 'Med'])
     pag_med.append([Data, Hora, "", Download, Upload, "", Min, Max, Media])
