@@ -20,17 +20,16 @@ Data = datetime.today().strftime('%Y-%m-%d')
 Hora = datetime.now().time().strftime('%H:%M:%S')
 Download = navegador.find_element (By.XPATH, '/html/body/div[3]/div[1]/div[3]/div/div/div/div[2]/div[3]/div[1]/div[3]/div/div[3]/div/div/div[2]/div[1]/div[1]/div/div[2]/span').text
 Upload = navegador.find_element (By.XPATH, '/html/body/div[3]/div[1]/div[3]/div/div/div/div[2]/div[3]/div[1]/div[3]/div/div[3]/div/div/div[2]/div[1]/div[2]/div/div[2]/span').text
-Min = navegador.find_element (By.XPATH, '/html/body/div[3]/div[1]/div[3]/div/div/div/div[2]/div[3]/div[1]/div[3]/div/div[3]/div/div/div[2]/div[2]/div/span[3]/span' ).text
-Max = navegador.find_element (By.XPATH, '/html/body/div[3]/div[1]/div[3]/div/div/div/div[2]/div[3]/div[1]/div[3]/div/div[3]/div/div/div[2]/div[2]/div/span[4]/span' ).text
-Media = navegador.find_element (By.XPATH, '/html/body/div[3]/div[1]/div[3]/div/div/div/div[2]/div[3]/div[1]/div[3]/div/div[3]/div/div/div[2]/div[2]/div/span[2]/span' ).text
+Min = int(navegador.find_element (By.XPATH, '/html/body/div[3]/div[1]/div[3]/div/div/div/div[2]/div[3]/div[1]/div[3]/div/div[3]/div/div/div[2]/div[2]/div/span[3]/span' ).text)
+Max =  int (navegador.find_element (By.XPATH, '/html/body/div[3]/div[1]/div[3]/div/div/div/div[2]/div[3]/div[1]/div[3]/div/div[3]/div/div/div[2]/div[2]/div/span[4]/span' ).text)
+Media = int(navegador.find_element (By.XPATH, '/html/body/div[3]/div[1]/div[3]/div/div/div/div[2]/div[3]/div[1]/div[3]/div/div[3]/div/div/div[2]/div[2]/div/span[2]/span' ).text)
+
 plan = ""
 
 Meses = ["", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
 NMes = datetime.now().month
 MesCorrente =  Meses[NMes]
 MesPassado = Meses[NMes - 1]
-
-
 
 try:               
     plan = opx.load_workbook(filename = 'Z:/7_Geral (RENAN)/Informática/Monitoramento de Link.xlsx')
