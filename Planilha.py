@@ -17,10 +17,10 @@ def carregar_ou_criar_planilha(caminho, MesPlanilha):
         plan = opx.Workbook()
         plan.active.title = MesPlanilha
         pag_med = plan.active
-        pag_med.append(['Data', 'Hora', '', 'Download', 'Upload', '', 'Min', 'Max', 'Med'])
+        pag_med.append(['Data', 'Hora', 'Download', 'Upload', 'Min', 'Max', 'Med'])
 
     return plan, pag_med
 
 def salvar_dados(plan, pag_med, Data, Hora, Download, Upload, Min, Max, Media, caminho):
-    pag_med.append([Data, Hora, "", Download, Upload, "", Min, Max, Media])
+    pag_med.append([Data, Hora, Download, Upload, Min, Max, Media])
     plan.save(caminho)

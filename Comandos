@@ -1,0 +1,4 @@
+pyinstaller --onefile --VelociPython.py
+
+# --onefile: Cria um único arquivo executavel.
+--windowed: Indica que o programa deve ser executado sem abrir a janela preta do terminal.
