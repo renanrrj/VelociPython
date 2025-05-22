@@ -1,6 +1,6 @@
-pyinstaller --onefile --windowed VelociPython.py
+#pyinstaller --onefile --windowed VelociPython.py
 
 # --onefile: Cria um único arquivo executavel.
---windowed: Indica que o programa deve ser executado sem abrir a janela preta do terminal.
+#--windowed: Indica que o programa deve ser executado sem abrir a janela preta do terminal.
 
-pyinstaller --onefile --windowed meu_programa_gui.py
+#pyinstaller --onefile --windowed meu_programa_gui.py
