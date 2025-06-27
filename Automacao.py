@@ -1,14 +1,19 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.firefox.service import Service
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.firefox.options import Options
 import time
 from datetime import datetime
 
 def iniciar_navegador():
     servico = Service(GeckoDriverManager().install())
+
+    options = Options()
+    options.add_argument('--headless')
+
     navegador = webdriver.Firefox(service=servico)
     return navegador
 
@@ -25,9 +30,7 @@ def obter_dados(navegador):
     WebDriverWait(navegador, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, 'download-speed')))
     WebDriverWait(navegador, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, 'upload-speed')))    
     WebDriverWait(navegador, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, 'ping-speed')))
-    #WebDriverWait(navegador, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, 'ping-min')))
-    #WebDriverWait(navegador, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, 'ping-max')))
-    
+        
     Download = navegador.find_element(By.CLASS_NAME, 'download-speed').text
     Upload = navegador.find_element(By.CLASS_NAME, 'upload-speed').text 
     Min = int(navegador.find_element(By.XPATH, '/html/body/div[3]/div[1]/div[3]/div/div/div/div[2]/div[2]/div/div[4]/div/div[3]/div/div/div[2]/div[2]/div/span[3]/span').text)
